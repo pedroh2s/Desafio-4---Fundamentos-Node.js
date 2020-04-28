@@ -24,15 +24,15 @@ class TransactionsRepository {
   }
 
   public getBalance(): Balance {
-    /* const { income, outcome } = this.transactions.reduce(
+    const { income, outcome } = this.transactions.reduce(
       (accumulator: Balance, transaction: Transaction) => {
         switch (transaction.type) {
           case 'income':
-            accumulator.income += transaction.value;
+            accumulator.income += Number(transaction.value);
             break;
 
           case 'outcome':
-            accumulator.outcome += transaction.value;
+            accumulator.outcome += Number(transaction.value);
             break;
 
           default:
@@ -46,21 +46,20 @@ class TransactionsRepository {
         total: 0,
       },
     );
- */
 
-    const income = this.transactions.reduce((sumIncome, transaction) => {
+    /* const income = this.transactions.reduce((sumIncome, transaction) => {
       if (transaction.type === 'income') {
-        return sumIncome + transaction.value;
+        return Number(sumIncome + transaction.value);
       }
       return sumIncome;
     }, 0);
 
     const outcome = this.transactions.reduce((sumOutcome, transaction) => {
       if (transaction.type === 'outcome') {
-        return sumOutcome + transaction.value;
+        return Number(sumOutcome + transaction.value);
       }
       return sumOutcome;
-    }, 0);
+    }, 0); */
 
     const total = income - outcome;
 
